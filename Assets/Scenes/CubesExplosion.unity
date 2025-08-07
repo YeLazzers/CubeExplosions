@@ -281,6 +281,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9104e228664296146a7f8dece8b6e11c, type: 3}
+--- !u!1 &487448673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 487448675}
+  - component: {fileID: 487448674}
+  m_Layer: 0
+  m_Name: CubeLottery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &487448674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487448673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f86f22235a3189499ef34c40dbac467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rayCaster: {fileID: 1566084216}
+  _spawner: {fileID: 999030438}
+  _exploder: {fileID: 1907119684}
+--- !u!4 &487448675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487448673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &882907534
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,6 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e42e8b7bcf40345a17675045720ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cubePrefab: {fileID: 5432924523127841470, guid: 9104e228664296146a7f8dece8b6e11c, type: 3}
 --- !u!1001 &1047950923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -654,6 +702,7 @@ GameObject:
   - component: {fileID: 1566084215}
   - component: {fileID: 1566084214}
   - component: {fileID: 1566084213}
+  - component: {fileID: 1566084217}
   - component: {fileID: 1566084216}
   m_Layer: 0
   m_Name: Main Camera
@@ -746,6 +795,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceccb7393444a464381177cc8bee1aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1566084217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566084212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb8254f6da206e408a108cbac872396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1638618271 stripped
@@ -957,6 +1018,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1907119683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1907119685}
+  - component: {fileID: 1907119684}
+  m_Layer: 0
+  m_Name: Exploder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1907119684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907119683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66cc7b3ed0977ea4b9c03cac16ea6adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionRadius: 3
+  _explosionForce: 3000
+  _effect: {fileID: 8063331690356840637, guid: b41270eb23a4ab54e969511b33362501, type: 3}
+--- !u!4 &1907119685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907119683}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2070920551 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5141774892626960727, guid: 9104e228664296146a7f8dece8b6e11c, type: 3}
@@ -1050,3 +1158,5 @@ SceneRoots:
   - {fileID: 1047950923}
   - {fileID: 999030437}
   - {fileID: 1657882707}
+  - {fileID: 487448675}
+  - {fileID: 1907119685}

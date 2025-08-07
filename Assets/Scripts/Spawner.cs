@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Cube _cubePrefab;
+    
+    public void SpawnChilds(Cube cube)
     {
-        
+        Vector3 cubePosition = cube.transform.position;
+        Vector3 cubeScale = cube.transform.localScale;
+        int childCount = Random.Range(2, 7);
+
+        for (int i = 0; i < childCount; i++)
+        {
+            var newCube = Instantiate(_cubePrefab, cubePosition, Quaternion.identity, transform);
+            newCube.GetComponent<Cube>().Initialize(cubeScale, cube.MultiplyChance);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Destroy(Cube cube)
     {
-        
+        Destroy(cube.gameObject);
     }
 }

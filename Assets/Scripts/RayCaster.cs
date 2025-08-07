@@ -1,28 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
+[RequireComponent(typeof(InputReader))]
 public class RayCaster : MonoBehaviour
 {
-    private void Update()
+    private InputReader _inputReader;
+
+    public UnityAction<Cube> OnCubeHitted;
+
+    private void Awake()
     {
-        if (Input.GetMouseButtonDown(0))
+        _inputReader = GetComponent<InputReader>();
+    }
+
+    private void OnEnable()
+    {
+        _inputReader.OnLeftMousePressed += RaycastToMousePoint;
+    }
+
+    private void OnDisable()
+    {
+        _inputReader.OnLeftMousePressed -= RaycastToMousePoint;
+    }
+
+    private void RaycastToMousePoint()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(_inputReader.MousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit raycastHit))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit raycastHit;
-            Cube cube;
-
-
-
-            if (Physics.Raycast(ray, out raycastHit))
+            if (raycastHit.collider.gameObject.TryGetComponent(out Cube cube))
             {
-                raycastHit.collider.gameObject.TryGetComponent<Cube>(out cube);
-                if (cube != null)
-                {
-                    Debug.Log("Clicked: " + raycastHit.collider.name);
-                    cube.Destroy();
-                }
-
+                Debug.Log("Clicked: " + raycastHit.collider.name);
+                OnCubeHitted?.Invoke(cube);
             }
         }
     }
