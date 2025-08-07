@@ -3,12 +3,14 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private Cube _cubePrefab;
+    [SerializeField] private int _minChild = 2;
+    [SerializeField] private int _maxChild = 7;
     
     public void SpawnChilds(Cube cube)
     {
         Vector3 cubePosition = cube.transform.position;
         Vector3 cubeScale = cube.transform.localScale;
-        int childCount = Random.Range(2, 7);
+        int childCount = Random.Range(_minChild, _maxChild);
 
         for (int i = 0; i < childCount; i++)
         {

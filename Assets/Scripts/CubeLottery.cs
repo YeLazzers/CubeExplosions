@@ -8,17 +8,17 @@ public class CubeLottery : MonoBehaviour
 
     private void OnEnable()
     {
-        _rayCaster.OnCubeHitted += TestLuck;
+        _rayCaster.OnCubeHitted += TryMultiply;
     }
 
     private void OnDisable()
     {
-        _rayCaster.OnCubeHitted -= TestLuck;
+        _rayCaster.OnCubeHitted -= TryMultiply;
     }
 
-    private void TestLuck(Cube cube)
+    private void TryMultiply(Cube cube)
     {
-        if (Random.Range(0, 101) <= cube.MultiplyChance)
+        if (Random.value <= cube.MultiplyChance)
         {
             _spawner.SpawnChilds(cube);
         }
