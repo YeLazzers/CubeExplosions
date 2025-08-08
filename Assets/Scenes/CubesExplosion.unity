@@ -457,6 +457,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cubePrefab: {fileID: 5432924523127841470, guid: 9104e228664296146a7f8dece8b6e11c, type: 3}
+  _minChild: 2
+  _maxChild: 7
 --- !u!1001 &1047950923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1079,7 +1081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionRadius: 3
-  _explosionForce: 3000
+  _explosionForce: 500
   _effect: {fileID: 8063331690356840637, guid: b122ff55b42de7749bc3254f78761fa8, type: 3}
 --- !u!4 &1907119685
 Transform:

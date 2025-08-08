@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class CubeLottery : MonoBehaviour
 {
@@ -20,12 +21,16 @@ public class CubeLottery : MonoBehaviour
     {
         if (Random.value <= cube.MultiplyChance)
         {
-            _spawner.SpawnChilds(cube);
+            List<Rigidbody> cubeRbs = new();
+
+            _spawner.SpawnChilds(cube).ForEach((childCube) => {
+                if (childCube.TryGetComponent(out Rigidbody rb))
+                {
+                    _exploder.Explode(cube.transform, rb);
+                }
+            });
         }
-        else
-        {
-            _exploder.Explode(cube.transform);
-        }
+
         _spawner.Destroy(cube);
     }
 }

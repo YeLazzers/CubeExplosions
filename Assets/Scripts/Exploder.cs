@@ -15,6 +15,10 @@ public class Exploder : MonoBehaviour
         }
         Instantiate(_effect, objectTransform.position, objectTransform.rotation, transform);
     }
+    public void Explode(Transform objectTransform, Rigidbody explodableObject)
+    {
+        explodableObject.AddExplosionForce(_explosionForce, objectTransform.position, _explosionRadius);
+    }
 
     private List<Rigidbody> GetExplodableObjects(Transform objectTransform)
     {
