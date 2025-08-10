@@ -11,9 +11,12 @@ public class Exploder : MonoBehaviour
     {
         foreach (Rigidbody explodableObject in GetExplodableObjects(objectTransform))
         {
-            explodableObject.AddExplosionForce(_explosionForce, objectTransform.position, _explosionRadius);
+            float distanceCoeff = _explosionRadius / Vector3.Distance(objectTransform.position, explodableObject.transform.position);
+            float sizeCoeff = objectTransform.localScale.x;
+
+            explodableObject.AddExplosionForce(_explosionForce / distanceCoeff / sizeCoeff, objectTransform.position, _explosionRadius / sizeCoeff);
         }
-        Instantiate(_effect, objectTransform.position, objectTransform.rotation, transform);
+         Instantiate(_effect, objectTransform.position, objectTransform.rotation, transform);
     }
     public void Explode(Transform objectTransform, Rigidbody explodableObject)
     {
@@ -27,7 +30,7 @@ public class Exploder : MonoBehaviour
         List<Rigidbody> explodableObjects = new();
 
         foreach (Collider hit in hits)
-            if (hit.attachedRigidbody != null)
+            if (hit.attachedRigidbody != null && objectTransform != hit.transform)
                 explodableObjects.Add(hit.attachedRigidbody);
 
         return explodableObjects;

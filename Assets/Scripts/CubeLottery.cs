@@ -29,8 +29,11 @@ public class CubeLottery : MonoBehaviour
                     _exploder.Explode(cube.transform, rb);
                 }
             });
+        } else
+        {
+            _exploder.Explode(cube.transform);
         }
 
-        _spawner.Destroy(cube);
+            _spawner.Destroy(cube);
     }
 }
